@@ -4,15 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backroudmain2"
     tools:context=".MainActivity">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/frameLayout_LyThuyet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton_LyThuyet"
+            android:layout_width="178dp"
+            android:layout_height="124dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/cloud"></ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Lý Thuyết"
+            android:textSize="25dp" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout_Onthi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout_LyThuyet">
+
+        <ImageButton
+            android:id="@+id/imageButton_OnThi"
+            android:layout_width="178dp"
+            android:layout_height="124dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/cloud"></ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Ôn Thi"
+            android:textSize="25dp" />
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
