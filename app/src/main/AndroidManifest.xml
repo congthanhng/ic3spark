@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LyThuyet.LythuyetActivity" />
+        <activity android:name=".OnTap.OntapActivity"></activity>
     </application>
 
 </manifest>
