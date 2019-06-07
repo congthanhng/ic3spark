@@ -27,6 +27,8 @@ public class LythuyetChildViewHolder extends ChildViewHolder {
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),lythuyetChild.getDocument().toString(),Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(v.getContext(),PdfViewActivity.class);
+
+                intent.putExtra("linkPdf",lythuyetChild.getDocument().toString());
                 v.getContext().startActivity(intent);
             }
         });
