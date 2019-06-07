@@ -20,6 +20,5 @@ public class PdfViewActivity extends AppCompatActivity {
 
         pdfView=(PDFView)findViewById(R.id.pdfViewer);
         pdfView.fromAsset(linkpdf.toString()).load();
-
     }
 }

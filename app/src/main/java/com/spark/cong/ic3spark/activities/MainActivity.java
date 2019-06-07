@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent_ontap=new Intent(MainActivity.this,OntapActivity.class);
+            Intent intent_ontap=new Intent(MainActivity.this,ScreenSlidePagerActivity.class);
             startActivityForResult(intent_ontap,456);
         }
     };

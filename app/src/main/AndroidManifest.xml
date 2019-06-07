@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".activities.LythuyetActivity"/>
         <activity android:name=".activities.OntapActivity"/>
+        <activity android:name=".activities.ScreenSlidePagerActivity"/>
     </application>
 
 </manifest>
