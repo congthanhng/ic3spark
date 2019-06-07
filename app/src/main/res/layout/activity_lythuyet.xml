@@ -6,22 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".activities.LythuyetActivity"
     android:orientation="vertical">
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Chuong 1"/>-->
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Chuong 2"/>-->
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Chuong 3"/>-->
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerView"
+    />
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfViewer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.github.barteksc.pdfviewer.PDFView>
+<!--    <com.github.barteksc.pdfviewer.PDFView-->
+<!--        android:id="@+id/pdfViewer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"></com.github.barteksc.pdfviewer.PDFView>-->
 
 </LinearLayout>

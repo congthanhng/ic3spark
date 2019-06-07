@@ -13,7 +13,6 @@ import com.spark.cong.ic3spark.R;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton imgButton_lythuyet,imgButton_onthi;
-    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         imgButton_lythuyet=(ImageButton) findViewById(R.id.imageButton_LyThuyet);
         imgButton_onthi=(ImageButton)findViewById(R.id.imageButton_OnThi);
-        button=(Button)findViewById(R.id.buttonok);
 
-        button.setOnClickListener(mLythuyetOnclickListener);
         imgButton_lythuyet.setOnClickListener(mLythuyetOnclickListener);
         imgButton_onthi.setOnClickListener(mOntapOnclickListener);
     }
