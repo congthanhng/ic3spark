@@ -10,13 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import com.spark.cong.ic3spark.R;
+import com.spark.cong.ic3spark.controllers.TracnghiemController;
 import com.spark.cong.ic3spark.fragments.ScreenSlidePageFragment;
+import com.spark.cong.ic3spark.models.TracNghiem;
+
+import java.util.ArrayList;
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 15;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -29,6 +33,10 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
      */
     private PagerAdapter pagerAdapter;
 
+    //CSDL
+    TracnghiemController tracnghiemController;
+    ArrayList<TracNghiem>arr_tn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +48,15 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         mPager.setAdapter(pagerAdapter);
 
         mPager.setPageTransformer(true, new DepthPageTransformer ());
+
+        tracnghiemController =new TracnghiemController(this);
+        arr_tn=new ArrayList<TracNghiem>();
+        arr_tn=tracnghiemController.getTracnghiem();
+    }
+
+    //tao phuong thuc de ScreenSlidePageFragment lay duoc data
+    public ArrayList<TracNghiem> getData(){
+        return arr_tn;
     }
 
     @Override
@@ -65,7 +82,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new ScreenSlidePageFragment();
+            return ScreenSlidePageFragment.create(position);
         }
 
         @Override
@@ -73,6 +90,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             return NUM_PAGES;
         }
     }
+
     public class DepthPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.75f;
 

@@ -20,7 +20,7 @@ import java.sql.SQLException;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "/data/data/com.spark.cong.ic3spark.models/databases/";
+    private static String DB_PATH = "/data/data/com.spark.cong.ic3spark/databases/";
     private static String DB_NAME = "ic3spark.sqlite";
     private static final int DATABASE_VERSION = 1;
 

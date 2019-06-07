@@ -9,6 +9,9 @@ import android.widget.ImageButton;
 
 
 import com.spark.cong.ic3spark.R;
+import com.spark.cong.ic3spark.models.DBHelper;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         imgButton_lythuyet.setOnClickListener(mLythuyetOnclickListener);
         imgButton_onthi.setOnClickListener(mOntapOnclickListener);
+
+        DBHelper db=new DBHelper(this);
+        try {
+            db.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     View.OnClickListener mLythuyetOnclickListener= new View.OnClickListener() {
