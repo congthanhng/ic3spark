@@ -10,6 +10,7 @@ public class TracNghiem {
     private String result;
     private String image;
     private String hadAns="";
+    public int choiceID= -1; //hỗ trợ checkid radio group
 
     public String getHadAns() {
         return hadAns;

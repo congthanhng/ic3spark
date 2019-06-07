@@ -75,11 +75,35 @@ public class ScreenSlidePageFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         tvNum.setText("Câu "+(mPageNumber+1));
         tvQuestion.setText(arr_Tn.get(mPageNumber).getQuestion());
-        radA.setText(arr_Tn.get(mPageNumber).getAns_a());
-        radB.setText(arr_Tn.get(mPageNumber).getAns_b());
-        radC.setText(arr_Tn.get(mPageNumber).getAns_c());
-        radD.setText(arr_Tn.get(mPageNumber).getAns_d());
+        radA.setText(getItem(mPageNumber).getAns_a());
+        radB.setText(getItem(mPageNumber).getAns_b());
+        radC.setText(getItem(mPageNumber).getAns_c());
+        radD.setText(getItem(mPageNumber).getAns_d());
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                arr_Tn.get(mPageNumber).choiceID=checkedId;
+                arr_Tn.get(mPageNumber).setHadAns(getChoiceFromID(checkedId));
+            }
+        });
+
+    }
+
+    public TracNghiem getItem(int position){
+        return arr_Tn.get(position);
+    }
+    //lấy giá trị(vị trí ) radioGroup chuyển thành đáp án A/B/C/D
+    private String getChoiceFromID(int ID) {
+        if (ID == R.id.radA) {
+            return "A";
+        } else if (ID == R.id.radB) {
+            return "B";
+        } else if (ID == R.id.radC) {
+            return "C";
+        } else if (ID == R.id.radD) {
+            return "D";
+        }else return "";
     }
 }
 

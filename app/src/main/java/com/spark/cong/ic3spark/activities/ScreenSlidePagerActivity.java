@@ -159,6 +159,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         gvLsAns.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mPager.setCurrentItem(position);
                 dialog.dismiss();
 
             }
