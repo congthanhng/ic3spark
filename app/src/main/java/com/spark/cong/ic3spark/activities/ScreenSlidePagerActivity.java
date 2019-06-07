@@ -1,6 +1,7 @@
 package com.spark.cong.ic3spark.activities;
 
 import android.app.Dialog;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -21,6 +22,7 @@ import com.spark.cong.ic3spark.fragments.ScreenSlidePageFragment;
 import com.spark.cong.ic3spark.models.TracNghiem;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
     /**
@@ -39,10 +41,13 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
      */
     private PagerAdapter pagerAdapter;
 
+
     TextView tvKiemtra;
+    TextView tvTimer;
     //CSDL
     TracnghiemController tracnghiemController;
     ArrayList<TracNghiem>arr_tn;
+    CounterClass timer; // khai bao lop dem nguoc
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +58,17 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         mPager = findViewById(R.id.pager);
         pagerAdapter=new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
-
         mPager.setPageTransformer(true, new DepthPageTransformer ());
+
+        //thoi gian dem nguoc 60s
+        timer=new CounterClass(60*1000,1000);
 
         tracnghiemController =new TracnghiemController(this);
         arr_tn=new ArrayList<TracNghiem>();
         arr_tn=tracnghiemController.getTracnghiem();
 
         tvKiemtra=(TextView)findViewById(R.id.tvKiemTra);
+        tvTimer=(TextView)findViewById(R.id.tvTimer);
 
         tvKiemtra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +76,14 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
                 checkAns();
             }
         });
+
+        tvTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        timer.start();
     }
 
     //tao phuong thuc de ScreenSlidePageFragment lay duoc data
@@ -186,6 +202,33 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             }
         });
         dialog.show();
+    }
+
+    // millisInFuture: 60*1000 (60 giây đến ngược)
+    //countDownInterval: 1000 (đếm ngược 1s)
+    public class CounterClass extends CountDownTimer {
+        /**
+         * @param millisInFuture    The number of millis in the future from the call
+         *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
+         *                          is called.
+         * @param countDownInterval The interval along the way to receive
+         *                          {@link #onTick(long)} callbacks.
+         */
+        public CounterClass(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            String countTime = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished), TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+            tvTimer.setText(countTime); //SetText cho textview hiện thị thời gian.
+        }
+
+        @Override
+        public void onFinish() {
+            tvTimer.setText("00:00");  //SetText cho textview hiện thị thời gian.
+        }
     }
 
 }
