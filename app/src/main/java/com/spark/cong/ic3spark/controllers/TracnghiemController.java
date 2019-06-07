@@ -23,7 +23,7 @@ public class TracnghiemController {
             TracNghiem item;
             item=new TracNghiem(cursor.getInt(0),cursor.getString(1),cursor.getString(2),
                     cursor.getString(3),cursor.getString(4),cursor.getString(5),
-                    cursor.getString(6),cursor.getString(7));
+                    cursor.getString(6),cursor.getString(7),"");
             lsData.add(item);
         }while (cursor.moveToNext());
         return lsData;

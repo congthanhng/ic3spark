@@ -1,5 +1,6 @@
 package com.spark.cong.ic3spark.activities;
 
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.TextView;
 import com.spark.cong.ic3spark.R;
+import com.spark.cong.ic3spark.adapters.CheckAnswerAdapter;
 import com.spark.cong.ic3spark.controllers.TracnghiemController;
 import com.spark.cong.ic3spark.fragments.ScreenSlidePageFragment;
 import com.spark.cong.ic3spark.models.TracNghiem;
@@ -33,6 +39,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
      */
     private PagerAdapter pagerAdapter;
 
+    TextView tvKiemtra;
     //CSDL
     TracnghiemController tracnghiemController;
     ArrayList<TracNghiem>arr_tn;
@@ -52,6 +59,15 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         tracnghiemController =new TracnghiemController(this);
         arr_tn=new ArrayList<TracNghiem>();
         arr_tn=tracnghiemController.getTracnghiem();
+
+        tvKiemtra=(TextView)findViewById(R.id.tvKiemTra);
+
+        tvKiemtra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAns();
+            }
+        });
     }
 
     //tao phuong thuc de ScreenSlidePageFragment lay duoc data
@@ -82,6 +98,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
+            //tra ve vi tri cua cau cho fragment hien thi
             return ScreenSlidePageFragment.create(position);
         }
 
@@ -127,4 +144,47 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             }
         }
     }
+
+    public void checkAns(){
+        final Dialog dialog=new Dialog(this);
+        dialog.setContentView(R.layout.dialog_check_answer);
+
+        dialog.setTitle("Danh sách câu trả lời");
+
+        //thiet lap adapter cho dialog
+        CheckAnswerAdapter answerAdapter=new CheckAnswerAdapter(arr_tn,this);
+        final GridView gvLsAns= (GridView)dialog.findViewById(R.id.gridViewQuestion);
+        gvLsAns.setAdapter(answerAdapter);
+
+        gvLsAns.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dialog.dismiss();
+
+            }
+        });
+
+        //khai bao 2 button
+        Button btnCancel,btnFinish;
+        btnCancel=(Button)dialog.findViewById(R.id.btnCancel);
+        btnFinish=(Button)dialog.findViewById(R.id.btnFinish);
+
+        //button click listener cancel
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        //button click listener finnish
+        btnFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dialog.show();
+    }
+
 }

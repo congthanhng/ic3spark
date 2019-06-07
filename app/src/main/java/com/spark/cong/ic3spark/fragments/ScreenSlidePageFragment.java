@@ -60,6 +60,7 @@ public class ScreenSlidePageFragment extends Fragment {
         mPageNumber=getArguments().getInt("ARG_PAGE");
     }
 
+    //lay vi tri cua cau hoi
     public static ScreenSlidePageFragment create(int pageNumber){
         ScreenSlidePageFragment fragment=new ScreenSlidePageFragment();
         Bundle args=new Bundle();

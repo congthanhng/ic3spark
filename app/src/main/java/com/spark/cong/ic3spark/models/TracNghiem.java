@@ -9,8 +9,17 @@ public class TracNghiem {
     private String ans_d;
     private String result;
     private String image;
+    private String hadAns="";
 
-    public TracNghiem(int id, String question, String ans_a, String ans_b, String ans_c, String ans_d, String result, String image) {
+    public String getHadAns() {
+        return hadAns;
+    }
+
+    public void setHadAns(String hadAns) {
+        this.hadAns = hadAns;
+    }
+
+    public TracNghiem(int id, String question, String ans_a, String ans_b, String ans_c, String ans_d, String result, String image,String hadAns) {
         this.id = id;
         this.question = question;
         this.ans_a = ans_a;
@@ -19,6 +28,7 @@ public class TracNghiem {
         this.ans_d = ans_d;
         this.result = result;
         this.image = image;
+        this.hadAns= hadAns;
     }
 
     public TracNghiem() {
