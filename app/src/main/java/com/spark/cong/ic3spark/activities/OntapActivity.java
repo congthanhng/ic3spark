@@ -1,4 +1,4 @@
-package com.spark.cong.ic3spark.OnTap;
+package com.spark.cong.ic3spark.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

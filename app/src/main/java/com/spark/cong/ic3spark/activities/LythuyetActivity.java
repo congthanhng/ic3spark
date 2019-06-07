@@ -1,4 +1,4 @@
-package com.spark.cong.ic3spark.LyThuyet;
+package com.spark.cong.ic3spark.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ public class LythuyetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lythuyet);
-        pdfView=(PDFView)findViewById(R.id.pdfViewer);
 
+        pdfView=(PDFView)findViewById(R.id.pdfViewer);
         pdfView.fromAsset("demo.pdf").load();
     }
 }

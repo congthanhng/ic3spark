@@ -1,4 +1,4 @@
-package com.spark.cong.ic3spark;
+package com.spark.cong.ic3spark.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 
-import com.spark.cong.ic3spark.LyThuyet.LythuyetActivity;
-import com.spark.cong.ic3spark.OnTap.OntapActivity;
+import com.spark.cong.ic3spark.R;
 
 public class MainActivity extends AppCompatActivity {
 
