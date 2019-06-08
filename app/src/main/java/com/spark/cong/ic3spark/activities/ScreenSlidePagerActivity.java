@@ -1,6 +1,7 @@
 package com.spark.cong.ic3spark.activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -85,6 +86,14 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        tvXemdiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ScreenSlidePagerActivity.this,TestDoneActivity.class);
+                startActivity(intent);
             }
         });
         timer.start();
