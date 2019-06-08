@@ -1,6 +1,7 @@
 package com.spark.cong.ic3spark.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,7 +24,9 @@ import java.util.ArrayList;
 public class ScreenSlidePageFragment extends Fragment {
     ArrayList<TracNghiem> arr_Tn;
     public static final String ARG_PAGE = "page";
-    private int mPageNumber;//vi tri trang hien tai
+    public static final String ARG_CHECKANSWER = "checkAnswer";
+    public int mPageNumber;//vi tri trang hien tai
+    public int checkAns;//biến kiểm tra
 
     TextView tvNum,tvQuestion;
     RadioGroup radioGroup;
@@ -57,14 +60,16 @@ public class ScreenSlidePageFragment extends Fragment {
         ScreenSlidePagerActivity screenSlidePagerActivity= (ScreenSlidePagerActivity) getActivity();
         arr_Tn=screenSlidePagerActivity.getData();
 
-        mPageNumber=getArguments().getInt("ARG_PAGE");
+        mPageNumber=getArguments().getInt(ARG_PAGE);
+        checkAns=getArguments().getInt(ARG_CHECKANSWER);
     }
 
     //lay vi tri cua cau hoi
-    public static ScreenSlidePageFragment create(int pageNumber){
+    public static ScreenSlidePageFragment create(int pageNumber,int checkAnswer){
         ScreenSlidePageFragment fragment=new ScreenSlidePageFragment();
         Bundle args=new Bundle();
-        args.putInt("ARG_PAGE",pageNumber);
+        args.putInt(ARG_PAGE,pageNumber);
+        args.putInt(ARG_CHECKANSWER,checkAnswer);
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,6 +84,14 @@ public class ScreenSlidePageFragment extends Fragment {
         radB.setText(getItem(mPageNumber).getAns_b());
         radC.setText(getItem(mPageNumber).getAns_c());
         radD.setText(getItem(mPageNumber).getAns_d());
+
+        if(checkAns!=0){
+            radA.setClickable(false);
+            radB.setClickable(false);
+            radC.setClickable(false);
+            radD.setClickable(false);
+            getCheckAns(getItem(mPageNumber).getResult().toString());
+        }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -104,6 +117,19 @@ public class ScreenSlidePageFragment extends Fragment {
         } else if (ID == R.id.radD) {
             return "D";
         }else return "";
+    }
+
+    //ham kiểm tra câu đúng,nếu câu đúng thì đổi màu radiobutton tương ứng
+    private void getCheckAns(String ans){
+        if(ans.equals("a")==true){
+            radA.setBackgroundColor(Color.RED);
+        }else if(ans.equals("b")==true){
+            radB.setBackgroundColor(Color.RED);
+        }else if(ans.equals("c")==true){
+            radC.setBackgroundColor(Color.RED);
+        }else if(ans.equals("d")==true){
+            radD.setBackgroundColor(Color.RED);
+        }else;
     }
 }
 

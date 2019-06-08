@@ -41,9 +41,12 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
      */
     private PagerAdapter pagerAdapter;
 
-
     TextView tvKiemtra;
     TextView tvTimer;
+    TextView tvXemdiem;
+
+    public int checkAns = 0;
+
     //CSDL
     TracnghiemController tracnghiemController;
     ArrayList<TracNghiem>arr_tn;
@@ -69,6 +72,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
         tvKiemtra=(TextView)findViewById(R.id.tvKiemTra);
         tvTimer=(TextView)findViewById(R.id.tvTimer);
+        tvXemdiem=(TextView)findViewById(R.id.tvScore);
 
         tvKiemtra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +119,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             //tra ve vi tri cua cau cho fragment hien thi
-            return ScreenSlidePageFragment.create(position);
+            return ScreenSlidePageFragment.create(position,checkAns);
         }
 
         @Override
@@ -194,16 +198,26 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             }
         });
 
-        //button click listener finnish
+        //button click listener finnish> dừng thời gian đếm ngược và thay đổi nút textview kiểm tra
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                timer.cancel();
+                result();
+                dialog.dismiss();
             }
         });
         dialog.show();
     }
 
+    //khi nop bai thay doi textview Kiemtra thanh Xemdiem
+    public void result(){
+        checkAns=1;
+        if (mPager.getCurrentItem()>=5)mPager.setCurrentItem(mPager.getCurrentItem()-4);
+        else if (mPager.getCurrentItem()<=5)mPager.setCurrentItem(mPager.getCurrentItem()+4);
+        tvXemdiem.setVisibility(View.VISIBLE);
+        tvKiemtra.setVisibility(View.GONE);
+    }
     // millisInFuture: 60*1000 (60 giây đến ngược)
     //countDownInterval: 1000 (đếm ngược 1s)
     public class CounterClass extends CountDownTimer {
