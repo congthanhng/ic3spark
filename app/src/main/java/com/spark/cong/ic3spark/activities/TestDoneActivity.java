@@ -56,7 +56,7 @@ public class TestDoneActivity extends AppCompatActivity {
                 builder.setView(view);
 
                 final EditText edtName = (EditText)view.findViewById(R.id.edtName);
-                TextView tvScore=(TextView)view.findViewById(R.id.tvScore);
+                TextView tvScore=(TextView)view.findViewById(R.id.tvScore2);
                  final int numTotal= numTrue*100;
                  tvScore.setText(numTotal+" Điểm");
                  builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {

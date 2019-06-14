@@ -21,6 +21,6 @@
             android:text="score"
             android:gravity="center"
             android:textColor="#E0113B"
-            android:id="@+id/tvScore"
+            android:id="@+id/tvScore1"
     />
 </LinearLayout>

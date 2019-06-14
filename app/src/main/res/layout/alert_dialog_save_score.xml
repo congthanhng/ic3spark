@@ -42,7 +42,7 @@
               android:textColor="#E0133C"
               android:text="100 điểm"
               android:gravity="center"
-              android:id="@+id/tvScore"
+              android:id="@+id/tvScore2"
     />
 
 </LinearLayout>

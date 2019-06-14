@@ -17,12 +17,12 @@ public class ScoreAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         View view= LayoutInflater.from(context).inflate(R.layout.item_list_score,parent,false);
-        return null;
+        return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView tvScore=(TextView) view.findViewById(R.id.tvScore);
+        TextView tvScore=(TextView) view.findViewById(R.id.tvScore1);
         TextView tvName=(TextView) view.findViewById(R.id.tvNameStudent);
         tvName.setText(cursor.getString(1));
         tvScore.setText(cursor.getInt(2)+"");

@@ -1,7 +1,7 @@
 package com.spark.cong.ic3spark.models;
 
 public class Score  {
-    private int id;
+    private int _id;
     private String name;
     private int score;
     private String date;
@@ -12,11 +12,11 @@ public class Score  {
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public class Score  {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public int getScore() {
         return score;
     }

@@ -34,7 +34,7 @@ public class ScoreController {
                 null,//doi so dieu kienj where
                 null,//bieu thuc froupBy
                 null,//bieu thuc having
-                "id DESC",//bieu thuc orderby
+                "_id DESC",//bieu thuc orderby
                 null );
         if(cursor!=null)cursor.moveToFirst();
         return cursor;
