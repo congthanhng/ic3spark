@@ -16,12 +16,11 @@ public class ScoreController {
         dbHelper=new DBHelper(context);
     }
 
-    public void insertScore(String name,int score,String room){
+    public void insertScore(String name,int score){
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
         values.put("name",name);
         values.put("score",score);
-        values.put("room",room);
         db.insert("tbscore",null,values);
         db.close();
     }

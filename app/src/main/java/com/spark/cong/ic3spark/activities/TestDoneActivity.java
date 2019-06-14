@@ -6,10 +6,15 @@ import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.spark.cong.ic3spark.R;
+import com.spark.cong.ic3spark.controllers.ScoreController;
+import com.spark.cong.ic3spark.models.Score;
 import com.spark.cong.ic3spark.models.TracNghiem;
 
 import java.util.ArrayList;
@@ -21,6 +26,8 @@ public class TestDoneActivity extends AppCompatActivity {
     int numFale=0;
     int totalScore=0;
 
+    ScoreController scoreController;
+
     TextView tvTrue,tvFalse,tvNotAns,tvTotalScore;
     Button btnHome,btnAgain,btnSaveScore;
 
@@ -28,6 +35,7 @@ public class TestDoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_done);
+        scoreController=new ScoreController(TestDoneActivity.this);
 
         Intent intent=getIntent();
         arr_QuesBegin= (ArrayList<TracNghiem>) intent.getExtras().getSerializable("arr_Ques");
@@ -38,6 +46,39 @@ public class TestDoneActivity extends AppCompatActivity {
         tvTrue.setText(""+numTrue);
         tvFalse.setText(""+numFale);
         tvTotalScore.setText(""+totalScore);
+
+        btnSaveScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(TestDoneActivity.this);
+                LayoutInflater inflater=TestDoneActivity.this.getLayoutInflater();
+                View view = inflater.inflate(R.layout.alert_dialog_save_score,null);
+                builder.setView(view);
+
+                final EditText edtName = (EditText)view.findViewById(R.id.edtName);
+                TextView tvScore=(TextView)view.findViewById(R.id.tvScore);
+                 final int numTotal= numTrue*100;
+                 tvScore.setText(numTotal+" Điểm");
+                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                         String name=edtName.getText().toString();
+                         scoreController.insertScore(name,numTotal);
+                         Toast.makeText( TestDoneActivity.this,"Lưu điểm thành công",Toast.LENGTH_SHORT).show();
+                         finish();
+                         dialog.dismiss();
+                     }
+                 });
+                 builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+
+                     }
+                 });
+                 AlertDialog b=builder.create();
+                 b.show();
+            }
+        });
 
         btnAgain.setOnClickListener(new View.OnClickListener() {
             @Override

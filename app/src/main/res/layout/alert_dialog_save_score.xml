@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:padding="10dp"
+              android:text="Lưu Điểm"
+              android:textStyle="bold"
+              android:textColor="#1341CC"
+              android:textSize="24sp"
+              android:background="#DB8FA9"
+        />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:padding="10dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:text="Họ Tên:"/>
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:hint="Điền tên bạn"
+                  android:inputType="textPersonName"
+                  android:id="@+id/edtName"
+        />
+    </LinearLayout>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="23sp"
+              android:textColor="#E0133C"
+              android:text="100 điểm"
+              android:gravity="center"
+              android:id="@+id/tvScore"
+    />
+
+</LinearLayout>
