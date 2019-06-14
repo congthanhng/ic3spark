@@ -1,6 +1,8 @@
 package com.spark.cong.ic3spark.models;
 
-public class TracNghiem {
+import java.io.Serializable;
+
+public class TracNghiem implements Serializable {
     private int id;
     private String question;
     private String ans_a;

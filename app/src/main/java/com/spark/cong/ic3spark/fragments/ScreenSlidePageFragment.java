@@ -109,13 +109,13 @@ public class ScreenSlidePageFragment extends Fragment {
     //lấy giá trị(vị trí ) radioGroup chuyển thành đáp án A/B/C/D
     private String getChoiceFromID(int ID) {
         if (ID == R.id.radA) {
-            return "A";
+            return "a";
         } else if (ID == R.id.radB) {
-            return "B";
+            return "b";
         } else if (ID == R.id.radC) {
-            return "C";
+            return "c";
         } else if (ID == R.id.radD) {
-            return "D";
+            return "d";
         }else return "";
     }
 

@@ -93,17 +93,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <Button
+                android:id="@+id/btnHome"
                 android:text="Trang chủ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
         <Button
+                android:id="@+id/btnAgain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Làm lại"
         />
         <Button
+                android:id="@+id/btnSaveScore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
