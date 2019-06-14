@@ -60,9 +60,11 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener mScoreOnclickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ScoreFragment scoreFragment = new ScoreFragment();
-            FragmentManager manager=getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.frameLayout_Score,scoreFragment,scoreFragment.getTag()).commit();
+//            ScoreFragment scoreFragment = new ScoreFragment();
+//            FragmentManager manager=getSupportFragmentManager();
+//            manager.beginTransaction().replace(R.id.frameLayout_Score,scoreFragment,scoreFragment.getTag()).commit();
+            Intent intent=new Intent(MainActivity.this,XemdiemActivity.class);
+            startActivityForResult(intent,567);
         }
     };
 
