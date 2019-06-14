@@ -12,6 +12,7 @@
             android:textStyle="bold"
             android:textColor="#559216"
             android:padding="5dp"
+            android:textSize="24sp"
 
     />
     <TextView
@@ -22,5 +23,6 @@
             android:gravity="center"
             android:textColor="#E0113B"
             android:id="@+id/tvScore1"
+            android:textSize="24sp"
     />
 </LinearLayout>
